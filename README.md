@@ -19,7 +19,7 @@
 > `jgsogo/conan-recipes` when a new release is published in this repository.
 >
 
-<!-- Use your repository here -->
+<!-- TODO: Use your repository here -->
 [![Build and tests](https://github.com/jgsogo/template-cpp-project/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/jgsogo/template-cpp-project/actions/workflows/ci.yml)
 [![Build and tests](https://github.com/jgsogo/template-cpp-project/actions/workflows/conan_package.yml/badge.svg?event=push)](https://github.com/jgsogo/template-cpp-project/actions/workflows/ci.yml)
 
@@ -28,6 +28,8 @@
 This library is available as a Conan package in my personal remote repository. To consume it, you just
 need to add the remote:
 
+
+<!-- TODO: Use your library/version here -->
 ```
 conan remote add sogo https://sogo.jfrog.io/artifactory/api/conan/conan-center
 conan install <library_name>/<library_version>@jgsogo/stable
