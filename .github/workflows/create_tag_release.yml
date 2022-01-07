@@ -5,7 +5,7 @@ on: workflow_dispatch
 
 jobs:
   cmakelists-version:
-    uses: jgsogo/template-cpp-project/.github/workflows/chunks/_parse_version.yml@master
+    uses: jgsogo/template-cpp-project/.github/chunks/_parse_version.yml@master
     with:
       github_sha: master
 
@@ -25,7 +25,7 @@ jobs:
           fi
 
   ci:
-    uses: jgsogo/template-cpp-project/.github/workflows/chunks/_build.yml@master
+    uses: jgsogo/template-cpp-project/.github/chunks/_build.yml@master
     needs: release-available  # Only run tests if version is available
     with:
       library_name: ${{ github.event.repository.name }}

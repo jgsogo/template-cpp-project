@@ -10,12 +10,12 @@ on:
 
 jobs:
   cmakelists-version:
-    uses: jgsogo/template-cpp-project/.github/workflows/chunks/_parse_version.yml@master
+    uses: jgsogo/template-cpp-project/.github/chunks/_parse_version.yml@master
     with:
       github_sha: ${{ github.sha }}
 
   ci:
-    uses: jgsogo/template-cpp-project/.github/workflows/chunks/_build.yml@master
+    uses: jgsogo/template-cpp-project/.github/chunks/_build.yml@master
     with:
       library_name: composite
       library_version: ${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
