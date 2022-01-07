@@ -37,7 +37,7 @@ jobs:
       - release-available
     runs-on: ubuntu-latest
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: "marvinpinto/action-automatic-releases@4edd7a5aabb1bc62e6dc99b3302d587bf3134e20"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           draft: true
