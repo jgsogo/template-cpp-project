@@ -1,5 +1,5 @@
 ---
-name: "Published Release"
+name: "On published Release"
 
 on:
   release:

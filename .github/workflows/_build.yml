@@ -1,4 +1,6 @@
 ---
+name: "(chunk) Build C++ project"
+
 on:
   workflow_call:
     inputs:

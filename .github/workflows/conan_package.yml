@@ -1,5 +1,5 @@
 ---
-name: Conan Package
+name: Test Conan recipe
 on:
   push:
     branches:

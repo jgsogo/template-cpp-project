@@ -1,4 +1,6 @@
 ---
+name: "(chunk) Parse version"
+
 on:
   workflow_call:
     inputs:
