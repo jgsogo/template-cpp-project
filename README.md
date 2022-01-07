@@ -17,8 +17,11 @@
 > 
 > These secreats are used by `.github/workflows/published_release.yml` to open a PR to
 > `jgsogo/conan-recipes` when a new release is published in this repository.
-> 
+>
 
+<!-- Use your repository here -->
+[![Build and tests](https://github.com/jgsogo/template-cpp-project/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/jgsogo/template-cpp-project/actions/workflows/ci.yml)
+[![Build and tests](https://github.com/jgsogo/template-cpp-project/actions/workflows/conan_package.yml/badge.svg?event=push)](https://github.com/jgsogo/template-cpp-project/actions/workflows/ci.yml)
 
 ## Build and run locally
 
