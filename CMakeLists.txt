@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
-project(cpp-project
+project(cpp-project  # TODO: Use your own project name (it should match repository name)
         LANGUAGES C CXX
         VERSION 0.1.0
-        DESCRIPTION "Description for C++ project")
+        DESCRIPTION "Description for C++ project")  # TODO: Use your description
 
 set(CMAKE_CXX_STANDARD 20)
 

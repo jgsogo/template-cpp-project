@@ -6,9 +6,18 @@
 > 
 > Search for TODO comments to apply the changes that are required to your specific project
 > and spend some time having a look to '.github/workflows' files to adjust them to your needs
+> (usually you can just remove all files starting with underscore).
 > 
-> Most of this template is thought to work together with 'https://github.com/jgsogo/conan-recipes'
+> Most of this template is designed to work together with 'https://github.com/jgsogo/conan-recipes'
 > repository, you might need to move some of those files to your own organization.
+> 
+> In order to work with `jgsogo/conan-recipes` there are two secrets expected in this repository:
+> * `APP_RECIPES_APP_ID`:  
+> * `APP_RECIPES_PRIVATE_KEY`:
+> 
+> These secreats are used by `.github/workflows/published_release.yml` to open a PR to
+> `jgsogo/conan-recipes` when a new release is published in this repository.
+> 
 
 
 ## Build and run locally
