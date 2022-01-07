@@ -6,6 +6,9 @@
 > 
 > Search for TODO comments to apply the changes that are required to your specific project
 > and spend some time having a look to '.github/workflows' files to adjust them to your needs
+> 
+> Most of this template is thought to work together with 'https://github.com/jgsogo/conan-recipes'
+> repository, you might need to move some of those files to your own organization.
 
 
 ## Build and run locally
