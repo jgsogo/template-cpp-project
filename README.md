@@ -55,5 +55,5 @@ conan install --lockfile=lockfile.json ../conanfile.txt --build=missing --genera
 ## Update dependencies
 
 ```
-conan lock create --name=composite --version=0.1 --base --lockfile-out lockfile.json conanfile.txt --build --profile:host=.conan/profiles/cpp20 --profile:build=default
+conan lock create --name=cpp-project --version=0.1 --base --lockfile-out lockfile.json --build --profile:host=.conan/profiles/cpp20 --profile:build=default conanfile.txt
 ```
