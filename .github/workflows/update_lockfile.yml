@@ -6,10 +6,6 @@ on: workflow_dispatch
 env:
   CONAN_USER_HOME: /home/conan
 
-defaults:
-  run:
-    working-directory: /home/conan/library
-
 jobs:
   update_lockfile:
     runs-on: ubuntu-latest
@@ -21,16 +17,10 @@ jobs:
       CONAN_PRINT_RUN_COMMANDS: 1
     steps:
 
-      - name: Check out repository code
-        uses: rodrigorodriguescosta/checkout@1d64c0a4a695ff5edb95596c11b430050668c83f  # FIXME: Not using actions/checkout just because of 'https://github.com/actions/checkout/pull/388'
+      - name: Checkout recipes repository
+        uses: actions/checkout@v2
         with:
-          path: /home/conan/library
-
-      - name: Cache Conan packages
-        uses: actions/cache@v2
-        with:
-          key: conan-cache-${{ github.event.repository.name }}
-          path: /home/conan/.conan
+          ref: 'master'
 
       - name: Configure Conan
         run: |
