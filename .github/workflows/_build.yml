@@ -68,7 +68,7 @@ jobs:
 
       - name: Connect to remote
         run: |
-          conan remote add -i 0 sogo ${{ inputs.remote_center }}
+          conan remote add sogo ${{ inputs.remote_center }}
 
       - name: Prepare deps
         run: |
