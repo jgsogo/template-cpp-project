@@ -1,7 +1,11 @@
 ---
 name: "(Manual) Update lockfile"
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  schedule:
+    # Trigger every sunday at 9:00
+    - cron: "0 9 * * 0"
 
 env:
   CONAN_USER_HOME: /home/conan
