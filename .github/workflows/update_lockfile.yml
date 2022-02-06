@@ -11,7 +11,7 @@ defaults:
     working-directory: /home/conan/library
 
 jobs:
-  build_and_test:
+  update_lockfile:
     runs-on: ubuntu-latest
     container:
       image: conanio/gcc10:1.43.3
@@ -51,6 +51,7 @@ jobs:
       - name: Update deps in lockfile
         run: |
           conan lock create --name=composite --version=0.1 --base --lockfile-out lockfile.json --build --profile:host=.conan/profiles/cpp20 --profile:build=default conanfile.txt
+          git diff
 
       - uses: tibdex/github-app-token@7ce9ffdcdeb2ba82b01b51d6584a6a85872336d4
         id: generate-token
