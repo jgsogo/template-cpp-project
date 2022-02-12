@@ -23,6 +23,10 @@ on:
         type: string
         required: false
         default: https://sogo.jfrog.io/artifactory/api/conan/conan-center
+      profile:
+        type: string
+        required: false
+        default: cpp20
 
 env:
   CONAN_USER_HOME: /home/conan
@@ -74,12 +78,11 @@ jobs:
         run: |
           cp -r .conan/profiles /home/conan/.conan
           conan profile list
-          mkdir cmake-build-cpp20
 
       - name: Compute lockfile for current configuration
         run: |
           mkdir build && cd build
-          conan lock create --profile:host=cpp20 --profile:build=default --lockfile=../lockfile.json --lockfile-out=lockfile.json --name=${{ inputs.library_name }} --version=${{ inputs.library_version }} ../conanfile.txt --build --update
+          conan lock create --profile:host=${{ inputs.profile }} --profile:build=default --lockfile=../lockfile.json --lockfile-out=lockfile.json --name=${{ inputs.library_name }} --version=${{ inputs.library_version }} ../conanfile.txt --build --update
 
       - name: Build the build-requires
         # This is needed because of https://github.com/conan-io/conan/issues/10345, but
@@ -102,7 +105,7 @@ jobs:
         run: |
           cd build
           . ./activate.sh
-          cmake .. -DCMAKE_MODULE_PATH=$(pwd) -DCMAKE_TOOLCHAIN_FILE=$CONAN_CMAKE_TOOLCHAIN_FILE
+          cmake .. -DCMAKE_MODULE_PATH=$(pwd) -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_TOOLCHAIN_FILE=$CONAN_CMAKE_TOOLCHAIN_FILE
           make
 
       - name: Run tests
