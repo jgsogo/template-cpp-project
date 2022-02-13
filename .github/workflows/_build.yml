@@ -101,9 +101,19 @@ jobs:
       - name: Build dependencies
         run: |
           cd build
+          conan info --lockfile=lockfile.json ../conanfile.txt --json=project.json
           conan install --lockfile=lockfile.json ../conanfile.txt --build=missing --generator=virtualenv
           conan remove "*" --builds --force
           conan remove "*" --src --force
+
+      - name: List built packages
+        run: |
+          cd build
+          jq '.[] | select( .context=="host") | select( .binary=="Missing") | .reference' project.json | while read -r reference ; do
+            ref_unquoted=$(echo $reference | sed 's/\"//g')
+            ref_usable=$(echo $ref_unquoted | sed '/@/!s/.*/&@/g')
+            echo "conan upload --confirm --parallel --all --remote sogo $ref_usable"
+          done
 
       - name: Build the project
         run: |
