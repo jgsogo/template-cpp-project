@@ -80,7 +80,7 @@ jobs:
 
       - name: Prepare deps
         run: |
-          cp -r .conan/profiles /home/conan/.conan
+          cp -r .conan/* /home/conan/.conan/
           conan profile list
 
       - name: Compute lockfile for current configuration
