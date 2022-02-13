@@ -17,7 +17,7 @@ jobs:
   ci:
     needs:
       cmakelists-version
-    uses: jgsogo/template-cpp-project/.github/workflows/_build.yml@ci/print-host-build
+    uses: jgsogo/template-cpp-project/.github/workflows/_build.yml@master
     with:
       library_name: ${{ github.event.repository.name }}
       library_version: ${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
