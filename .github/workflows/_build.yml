@@ -38,8 +38,8 @@ on:
       conanfile:
         type: string
         required: false
-        default: ""
-        description: "Name of the conanfile, typically it will be `conanfile.txt` or `conanfile.py`. By default it is empty and Conan will search best match"
+        default: conanfile.txt
+        description: "Name of the conanfile, typically it will be `conanfile.txt` or `conanfile.py`"
     secrets:
       RT_TOKEN:
         required: false
