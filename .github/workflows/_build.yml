@@ -23,6 +23,10 @@ on:
         type: string
         required: false
         default: https://sogo.jfrog.io/artifactory/api/conan/conan-center
+      remote_project:
+        type: string
+        required: false
+        default: ""
       profile:
         type: string
         required: true
@@ -76,9 +80,15 @@ jobs:
           conan --version
           conan config home
 
-      - name: Connect to remote
+      - name: Connect to remote (center)
         run: |
-          conan remote add sogo ${{ inputs.remote_center }}
+          conan remote add -i 0 sogo ${{ inputs.remote_center }}
+
+      - name: Connect to remote (project)
+        if: ${{ inputs.remote_project }}
+        run: |
+          conan remote add -i 0 sogo-project ${{ inputs.remote_project }}
+          conan user -r sogo-project -p ${{secrets.RT_TOKEN}} ${{secrets.RT_USERNAME}}
 
       - name: Prepare deps
         run: |
@@ -115,6 +125,7 @@ jobs:
             ref_unquoted=$(echo $reference | sed 's/\"//g')
             ref_usable=$(echo $ref_unquoted | sed '/@/!s/.*/&@/g')
             echo "conan upload --confirm --parallel --all --remote sogo $ref_usable"
+            conan upload --confirm --parallel --all --remote sogo-project $ref_usable
           done
 
       - name: Build the project
