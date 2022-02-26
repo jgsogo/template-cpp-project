@@ -30,7 +30,7 @@ on:
       run_tests:
         type: string
         required: false
-        default: tests/unit_tests
+        default: ctest --output-on-failure
 
 env:
   CONAN_USER_HOME: /home/conan
