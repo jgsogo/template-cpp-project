@@ -32,9 +32,9 @@ on:
         required: false
         default: Release
       run_tests:
-        type: boolean
+        type: string
         required: false
-        default: true
+        default: tests/unit_tests
 
 env:
   CONAN_USER_HOME: /home/conan
@@ -132,4 +132,4 @@ jobs:
         if: ${{ inputs.run_tests }}
         run: |
           cd build
-          tests/unit_tests
+          ${{ inputs.run_tests }}
