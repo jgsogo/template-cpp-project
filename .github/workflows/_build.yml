@@ -35,6 +35,11 @@ on:
         type: string
         required: false
         default: ctest --output-on-failure
+      conanfile:
+        type: string
+        required: false
+        default: ""
+        description: "Name of the conanfile, typically it will be `conanfile.txt` or `conanfile.py`. By default it is empty and Conan will search best match"
     secrets:
       RT_TOKEN:
         required: false
@@ -103,7 +108,7 @@ jobs:
       - name: Compute lockfile for current configuration
         run: |
           mkdir build && cd build
-          conan lock create --profile:host=${{ inputs.profile }} --profile:build=default --lockfile=../lockfile.json --lockfile-out=lockfile.json --name=${{ inputs.library_name }} --version=${{ inputs.library_version }} ../conanfile.txt --build --update
+          conan lock create --profile:host=${{ inputs.profile }} --profile:build=default --lockfile=../lockfile.json --lockfile-out=lockfile.json --name=${{ inputs.library_name }} --version=${{ inputs.library_version }} ../${{ inputs.conanfile }} --build --update
 
       - name: Build the build-requires
         # This is needed because of https://github.com/conan-io/conan/issues/10345, but
@@ -118,8 +123,8 @@ jobs:
       - name: Build dependencies
         run: |
           cd build
-          conan info --lockfile=lockfile.json ../conanfile.txt --json=project.json
-          conan install --lockfile=lockfile.json ../conanfile.txt --build=missing --generator=virtualenv
+          conan info --lockfile=lockfile.json ../${{ inputs.conanfile }} --json=project.json
+          conan install --lockfile=lockfile.json ../${{ inputs.conanfile }} --build=missing --generator=virtualenv
           conan remove "*" --builds --force
           conan remove "*" --src --force
 
