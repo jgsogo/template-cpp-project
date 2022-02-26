@@ -17,7 +17,7 @@ jobs:
   ci-cpp20:
     needs:
       cmakelists-version
-    uses: jgsogo/template-cpp-project/.github/workflows/_build.yml@master
+    uses: jgsogo/template-cpp-project/.github/workflows/_build.yml@ci/upload-other
     with:
       library_name: ${{ github.event.repository.name }}
       library_version: ${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
@@ -27,7 +27,7 @@ jobs:
   ci-default:
     needs:
       cmakelists-version
-    uses: jgsogo/template-cpp-project/.github/workflows/_build.yml@master
+    uses: jgsogo/template-cpp-project/.github/workflows/_build.yml@ci/upload-other
     with:
       library_name: ${{ github.event.repository.name }}
       library_version: ${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
