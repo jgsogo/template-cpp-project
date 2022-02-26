@@ -25,16 +25,12 @@ on:
         default: https://sogo.jfrog.io/artifactory/api/conan/conan-center
       profile:
         type: string
-        required: false
-        default: cpp20
-      build_type:
-        type: string
-        required: false
-        default: Release
+        required: true
+        description: "Profile to use in this run"
       run_tests:
         type: string
         required: false
-        default: tests/unit_tests
+        default: ctest --output-on-failure
 
 env:
   CONAN_USER_HOME: /home/conan
@@ -125,7 +121,7 @@ jobs:
         run: |
           cd build
           . ./activate.sh
-          cmake .. -DCMAKE_MODULE_PATH=$(pwd) -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_TOOLCHAIN_FILE=$CONAN_CMAKE_TOOLCHAIN_FILE -DCMAKE_BUILD_TYPE=${{ inputs.build_type }}
+          cmake .. -DCMAKE_MODULE_PATH=$(pwd) -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_TOOLCHAIN_FILE=$CONAN_CMAKE_TOOLCHAIN_FILE -DCMAKE_BUILD_TYPE=$(conan profile get settings.build_type ${{ inputs.profile }})
           make
 
       - name: Run tests
