@@ -35,6 +35,11 @@ on:
         type: string
         required: false
         default: ctest --output-on-failure
+    secrets:
+      RT_TOKEN:
+        required: false
+      RT_USERNAME:
+        required: false
 
 env:
   CONAN_USER_HOME: /home/conan
