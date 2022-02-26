@@ -128,7 +128,8 @@ jobs:
           conan remove "*" --builds --force
           conan remove "*" --src --force
 
-      - name: List built packages
+      - name: List and upload packages that have being built
+        if: ${{ inputs.remote_project }}
         run: |
           cd build
           jq '.[] | select( .context=="host") | select( .binary=="Missing") | .reference' project.json | while read -r reference ; do
