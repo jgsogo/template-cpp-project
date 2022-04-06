@@ -50,7 +50,7 @@ jobs:
 
       - name: Update deps in lockfile
         run: |
-          conan lock create --name=template-cpp-project --version=0.1.0 --base --lockfile-out lockfile.json --build --profile:host=.conan/profiles/cpp20 --profile:build=default conanfile.txt
+          conan lock create --name=${{ github.event.repository.name }} --version=0.1.0 --base --lockfile-out lockfile.json --build --profile:host=.conan/profiles/cpp20 --profile:build=default conanfile.txt
           git diff
 
       - uses: tibdex/github-app-token@7ce9ffdcdeb2ba82b01b51d6584a6a85872336d4
