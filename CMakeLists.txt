@@ -4,6 +4,9 @@ project(cpp-project  # TODO: Use your own project name (it should match reposito
         VERSION 0.1.0
         DESCRIPTION "Description for C++ project")  # TODO: Use your description
 
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(src)
