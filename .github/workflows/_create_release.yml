@@ -17,6 +17,6 @@ jobs:
     steps:
       - uses: "marvinpinto/action-automatic-releases@4edd7a5aabb1bc62e6dc99b3302d587bf3134e20"
         with:
-          repo_token: "${{ secrets.REPOSITORY_TOKEN }}"
+          repo_token: ${{ secrets.REPOSITORY_TOKEN }}
           draft: true
-          automatic_release_tag: "v${{ inputs.library_version }}"
+          automatic_release_tag: ${{ inputs.library_version }}
