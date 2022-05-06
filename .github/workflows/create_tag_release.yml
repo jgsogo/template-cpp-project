@@ -47,15 +47,12 @@ jobs:
       profile: default
 
   create_release:
+    uses: jgsogo/template-cpp-project/.github/workflows/_create_release.yml@master
     needs:
       - ci-default
       - ci-cpp20
       - cmakelists-version  # Needed to access dependent variable
-    runs-on: ubuntu-latest
-    steps:
-      - uses: "marvinpinto/action-automatic-releases@4edd7a5aabb1bc62e6dc99b3302d587bf3134e20"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          draft: true
-          automatic_release_tag: "v${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}"
-
+    with:
+      library_version: v${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
