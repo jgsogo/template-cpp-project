@@ -33,3 +33,14 @@ jobs:
       library_version: ${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
       github_sha: ${{ github.sha }}
       profile: default
+
+  ci-macos-cpp20:
+    needs:
+      - ci-cpp20
+      - ci-default
+    uses: jgsogo/template-cpp-project/.github/workflows/_build_macos.yml@master
+    with:
+      library_name: ${{ github.event.repository.name }}
+      library_version: ${{ needs.cmakelists-version.outputs.LIBRARY_VERSION }}
+      github_sha: ${{ github.sha }}
+      profile: cpp20
