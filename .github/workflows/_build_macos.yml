@@ -62,10 +62,11 @@ jobs:
       - name: Check out repository code
         uses: rodrigorodriguescosta/checkout@1d64c0a4a695ff5edb95596c11b430050668c83f  # FIXME: Not using actions/checkout just because of 'https://github.com/actions/checkout/pull/388'
 
-      - name: Cache Conan packages
-        uses: actions/cache@v2
-        with:
-          key: conan-cache-${{ inputs.library_name }}
+      # - name: Cache Conan packages
+      #   uses: actions/cache@v2
+      #   with:
+      #     key: conan-cache-${{ inputs.library_name }}
+      #     path: 
 
       - name: Install Conan
         run: |
