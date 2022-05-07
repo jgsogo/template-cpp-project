@@ -70,7 +70,7 @@ jobs:
 
       - name: Install Conan
         run: |
-          pip install conan==${{ inputs.conan_version }}
+          pip3 install conan==${{ inputs.conan_version }}
           conan --version
 
       - name: Configure Conan
